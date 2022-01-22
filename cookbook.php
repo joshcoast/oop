@@ -1,24 +1,26 @@
 <?php
-include "classes/recipes.php";
-include "classes/render.php";
-
-$recipe1 = new Recipe();
-//$recipe1->source = "Nana";
-$recipe1->setTitle("apple Pie");
-$recipe1->addIngredient("egg", 1);
-$recipe1->addIngredient("flower", 2, "cup");
+require 'classes/recipes.php';
+require 'classes/render.php';
 
 $recipe2 = new Recipe();
-$recipe2->setSource = "Betty Crocker";
-$recipe2->setTitle("Blueberry Pie");
+$recipe1 = new Recipe();
 
-$recipe1->addInstructions("This is the first instruction");
-$recipe1->addInstructions("This is the second instruction");
-  
-$recipe1->addTag("Breakfast");
-$recipe1->addTag("Eggs");
+$recipe1->set_title( 'apple Pie' );
+$recipe1->add_ingredient( 'egg', 1 );
+$recipe1->add_ingredient( 'flower', 2, 'cup' );
+$recipe1->add_instructions( '1) This is my first instruction' );
+$recipe1->add_instructions( '2) This is my second instruction' );
+$recipe1->add_tag( 'Breakfast' );
+$recipe1->add_tag( 'Eggs' );
+$recipe1->set_yield( 'makes one serving' );
+$recipe1->set_source( 'Yo Mama Cook Book' );
 
-$recipe1->setYield("makes one serving");
-$recipe1->setSource("Yo Mama");
+$recipe2->set_title( 'Blueberry Pie' );
+$recipe2->set_source( 'Betty Crocker' );
+$recipe2->add_ingredient( 'Flower', 2, 'cup' );
+$recipe2->add_ingredient( 'egg', 1 );
+$recipe2->add_ingredient( 'flower', 2, 'cup' );
 
-echo Render::displayRecipe($recipe1);
+echo implode( ' --- ', $recipe1->get_instructions() );
+
+echo Render::display_recipe( $recipe1 );

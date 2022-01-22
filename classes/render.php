@@ -1,28 +1,27 @@
 <?php
 
-class Render
-{
-  public static function listIngredients($ingredients) 
-  {
-    $output = "";
-    foreach ($ingredients as $ing) {
-      $output .= $ing["amount"] . " " . $ing["measure"] . " " . $ing["item"];
-      $output .= "\n";
-    }
-    return $output;
-  }
-  // static methods are accessable ouside the class, without needing to make an instance of the class.
-  public static function displayRecipe($recipe)
-  {
-    $output = "";
-    $output .= $recipe->getTitle() . " by " . $recipe->getSource();
-    $output .= "\n";
-    $output .+ implode(", ",$recipe->getTags());
-    $output .= "\n";
-    $output .= self::listIngredients($recipe->getIngredients());
-    $output .= implode("\n", $recipe->getInstructions());
-    $output .= "\n";
-    $output .= $recipe->getYield();
-    return $output;
-  }
+class Render {
+
+	public static function list_ingredients( $ingredients ) {
+		$output = '';
+		foreach ( $ingredients as $ing ) {
+			$output .= '<li>';
+			$output .= $ing['amount'] . ' ' . $ing['measure'] . ' ' . $ing['item'];
+			$output .= '</li>';
+		}
+		return $output;
+	}
+	// Static methods can be called directly - without creating an instance of the class first.
+	public static function display_recipe( $recipe ) {
+		$output  = ' ';
+		$output .= $recipe->get_title() . ' by ' . $recipe->get_source();
+		$output .= "\n";
+		$output .= implode( ', ', $recipe->get_tags() );
+		$output .= "\n";
+		$output .= self::listIngredients( $recipe->get_ingredients() );
+		$output .= implode( "\n", $recipe->get_instructions() );
+		$output .= "\n";
+		$output .= $recipe->get_yield();
+		return $output;
+	}
 }
