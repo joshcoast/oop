@@ -1,17 +1,71 @@
 <?php
+/**
+ * The Recipe class. Defines what information can be added and used for a recipe.
+ *
+ * @category   Recipe
+ * @package    Recipe Book
+ * @author     Josh Coast <josh@joshcoast.com>
+ * @copyright  1997-2005 The PHP Group
+ * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version    SVN: $Id$
+ * @link       http://joshcoast.com
+ * @since      File available since Release 1.0
+ */
 
 /**
  * Recipe class defines what goes into a recipe.
  */
 class Recipe {
 
+	/**
+	 * The title of the recipe.
+	 *
+	 * @var string $title
+	 */
 	private $title;
-	private $ingredients  = array();
+
+	/**
+	 * The ingredients for the recipe.
+	 *
+	 * @var array $ingredients
+	 */
+	private $ingredients = array();
+
+	/**
+	 * The instructions for the recipe.
+	 *
+	 * @var array $instructions
+	 */
 	private $instructions = array();
+
+	/**
+	 * The yield for the recipe. How may servings this recipe makes.
+	 *
+	 * @var array $yield
+	 */
 	private $yield;
-	private $tag    = array();
+
+	/**
+	 * The tags for the recipe. Used for sorting.
+	 *
+	 * @var array $tags
+	 */
+	private $tag = array();
+
+	/**
+	 * The source for the recipe. The person or book responsible for the recipe.
+	 * Uses the default of "Josh Coast".
+	 *
+	 * @var array $source
+	 */
 	private $source = 'Josh Coast';
 
+	/**
+	 * The kinds of measurements excepted for the recipe.
+	 * This is a preloaded array.
+	 *
+	 * @var array $measurements
+	 */
 	private $measurements = array(
 		'tsp',
 		'tbsl',
@@ -43,7 +97,8 @@ class Recipe {
 	}
 
 	/**
-	 * Add an ingredient. Check if amount is a float. Checks if amount is a valid measurement
+	 * Add an ingredient. Check if amount is a float.
+	 * Checks if measurement is an entry in $measurements.
 	 * Converts Items to title case. Converts measurement to lowercase.
 	 *
 	 * @param Item    $item The instruction.

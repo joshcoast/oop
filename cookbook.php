@@ -1,6 +1,7 @@
 <?php
-require 'classes/recipes.php';
-require 'classes/render.php';
+
+require 'classes/class-recipe.php';
+require 'classes/class-render.php';
 
 $recipe2 = new Recipe();
 $recipe1 = new Recipe();
